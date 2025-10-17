@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="flex items-center justify-center h-screen bg-gray-100">
+    <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-64">
+        <h1 class="text-center text-2xl font-bold mb-4">Calculator</h1>
+        <input id="result" type="text" class="border border-gray-300 rounded w-full py-2 px-3 mb-4" placeholder="0" disabled>
+        <div class="grid grid-cols-4 gap-2">
+            <button onclick="clearResult()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">C</button>
+            <button onclick="appendToResult('7')" class="bg-gray-200 hover:bg-gray-300 py-2">7</button>
+            <button onclick="appendToResult('8')" class="bg-gray-200 hover:bg-gray-300 py-2">8</button>
+            <button onclick="appendToResult('9')" class="bg-gray-200 hover:bg-gray-300 py-2">9</button>
+            <button onclick="appendToResult('/')" class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded">/</button>
+            <button onclick="appendToResult('4')" class="bg-gray-200 hover:bg-gray-300 py-2">4</button>
+            <button onclick="appendToResult('5')" class="bg-gray-200 hover:bg-gray-300 py-2">5</button>
+            <button onclick="appendToResult('6')" class="bg-gray-200 hover:bg-gray-300 py-2">6</button>
+            <button onclick="appendToResult('*')" class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded">*</button>
+            <button onclick="appendToResult('1')" class="bg-gray-200 hover:bg-gray-300 py-2">1</button>
+            <button onclick="appendToResult('2')" class="bg-gray-200 hover:bg-gray-300 py-2">2</button>
+            <button onclick="appendToResult('3')" class="bg-gray-200 hover:bg-gray-300 py-2">3</button>
+            <button onclick="appendToResult('-')" class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded">-</button>
+            <button onclick="appendToResult('0')" class="bg-gray-200 hover:bg-gray-300 py-2">0</button>
+            <button onclick="appendToResult('.')" class="bg-gray-200 hover:bg-gray-300 py-2">.</button>
+            <button onclick="calculateResult()" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">=</button>
+            <button onclick="appendToResult('+')" class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded">+</button>
+        </div>
+    </div>
+
+    <script>
+        function appendToResult(value) {
+            document.getElementById('result').value += value;
+        }
+
+        function clearResult() {
+            document.getElementById('result').value = '';
+        }
+
+        function calculateResult() {
+            try {
+                const result = eval(document.getElementById('result').value);
+                document.getElementById('result').value = result;
+            } catch (error) {
+                document.getElementById('result').value = 'Error';
+            }
+        }
+    </script>
+</body>
+</html>
